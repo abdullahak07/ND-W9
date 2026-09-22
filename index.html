@@ -2,82 +2,64 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>COMP6012 Week 9 · Defense Campus</title>
-<meta name="theme-color" content="#bfe7ff">
+<title>COMP6012 Week 9 · Defense Story</title>
+<meta name="theme-color" content="#111318">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="sky">
-  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+<div class="frame">
+  <header class="topline">
+    <div><b>COMP6012</b><span>WEEK 9 · EFFECTIVE DEFENSE TACTICS & DATA PROTECTION</span></div>
+    <div class="progressText"><span id="slideNo">01</span><em>/</em><span>09</span></div>
+  </header>
+
+  <main id="deck" class="deck">
+    <section class="slide intro-slide active" data-title="Opening">
+      <div class="intro-left">
+        <div class="eyebrow">FULL-SCREEN CLASS EXPERIENCE</div>
+        <h1>STOP<br>THE<br>BREACH.</h1>
+        <p>Threat intelligence only helps when the environment underneath it is defensible. This lecture is a visual journey through the controls that stop attackers from moving from identity compromise to data loss.</p>
+        <div class="keys"><span>SCROLL</span><b>↓</b><span>or use arrow keys</span></div>
+      </div>
+      <div class="intro-right">
+        <div class="chain">
+          <div><span>01</span><b>Credential theft</b></div>
+          <i></i>
+          <div><span>02</span><b>Network pivot</b></div>
+          <i></i>
+          <div><span>03</span><b>Endpoint compromise</b></div>
+          <i></i>
+          <div><span>04</span><b>Data exfiltration</b></div>
+        </div>
+        <div class="big-rule">ONE CONTROL CAN FAIL.<br><strong>LAYERS SHOULD OVERLAP.</strong></div>
+      </div>
+    </section>
+
+    <div id="slidesA"></div>
+    <div id="slidesB"></div>
+
+    <section class="slide quiz-slide" data-title="Final Check">
+      <div class="quiz-left">
+        <div class="eyebrow">09 · FINAL DEFENSE REVIEW</div>
+        <h2>Would your design survive?</h2>
+        <p>Nine decisions across the whole lecture. Immediate feedback and final score.</p>
+        <div class="quiz-meter"><span id="quizProgress">0 / 9 complete</span></div>
+      </div>
+      <div class="quiz-right" id="finalQuiz"></div>
+    </section>
+  </main>
+
+  <aside class="railnav">
+    <button id="prevBtn" aria-label="Previous slide">↑</button>
+    <div id="dots"></div>
+    <button id="nextBtn" aria-label="Next slide">↓</button>
+  </aside>
+
+  <footer class="footerline">
+    <span id="slideTitle">Opening</span>
+    <span>COMP6012 · CYBER THREAT INTELLIGENCE</span>
+  </footer>
 </div>
-<header class="hud">
-  <div><b>COMP6012 · WEEK 9</b><span>Effective Defense Tactics & Data Protection</span></div>
-  <button id="mapBtn">Campus Map</button>
-  <div class="hud-right"><span id="locationLabel">Central Quad</span><i></i></div>
-</header>
-
-<main>
-<section id="campus" class="campus-screen">
-  <div class="campus-title">
-    <span>INTERACTIVE LECTURE CAMPUS</span>
-    <h1>DEFENSE<br>CAMPUS</h1>
-    <p>Walk through seven locations. Each building teaches one part of the lecture using a different interaction.</p>
-  </div>
-
-  <div class="campus-map">
-    <svg class="paths" viewBox="0 0 1000 650" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M140 490 C250 420,310 430,390 360 S550 260,650 320 S820 420,890 260"/>
-      <path d="M390 360 C440 470,520 500,590 520"/>
-      <path d="M650 320 C680 220,760 170,850 150"/>
-    </svg>
-
-    <button class="building b-cia" data-place="cia">
-      <span class="roof"></span><span class="body"></span><em>1</em><b>CIA Hall</b><small>Confidentiality · Integrity · Availability</small>
-    </button>
-    <button class="building b-fail" data-place="fail">
-      <span class="roof"></span><span class="body"></span><em>2</em><b>Failure Museum</b><small>Why defense programs break</small>
-    </button>
-    <button class="building b-monitor" data-place="monitor">
-      <span class="roof"></span><span class="body"></span><em>3</em><b>Watchtower</b><small>Active vs passive monitoring</small>
-    </button>
-    <button class="building b-vuln" data-place="vuln">
-      <span class="roof"></span><span class="body"></span><em>4</em><b>Triage Clinic</b><small>Assessment · CVSS · remediation</small>
-    </button>
-    <button class="building b-data" data-place="data">
-      <span class="roof"></span><span class="body"></span><em>5</em><b>Data Vault</b><small>Encrypt · tokenise · mask</small>
-    </button>
-    <button class="building b-endpoint" data-place="endpoint">
-      <span class="roof"></span><span class="body"></span><em>6</em><b>Device Garage</b><small>Endpoint policy & patching</small>
-    </button>
-    <button class="building b-breach" data-place="breach">
-      <span class="roof"></span><span class="body"></span><em>7</em><b>Incident Theatre</b><small>Home Depot breach replay</small>
-    </button>
-
-    <div class="quad">
-      <div class="shield">✦</div>
-      <b>START HERE</b>
-      <span>Pick any building</span>
-    </div>
-  </div>
-</section>
-
-<div id="scenes"></div>
-
-<section id="quizScene" class="scene quiz-scene">
-  <button class="back-map">← Campus Map</button>
-  <div class="scene-shell">
-    <div class="scene-head"><span>FINAL STOP</span><h2>Graduation Check</h2><p>Nine decisions across the whole lecture.</p></div>
-    <div id="finalQuiz"></div>
-  </div>
-</section>
-</main>
-
-<div class="passport">
-  <span>VISITED</span>
-  <i data-stamp="cia"></i><i data-stamp="fail"></i><i data-stamp="monitor"></i><i data-stamp="vuln"></i><i data-stamp="data"></i><i data-stamp="endpoint"></i><i data-stamp="breach"></i>
-  <button id="quizBtn">Final Check →</button>
-</div>
-
 <script src="content-a.js"></script>
 <script src="content-b.js"></script>
 <script src="app.js"></script>
