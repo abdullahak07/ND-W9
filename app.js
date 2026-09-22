@@ -13,10 +13,14 @@ const dots=[...dotsHost.children];
 function go(i){
   i=Math.max(0,Math.min(slides.length-1,i));
   current=i;
-  slides.forEach((s,j)=>s.classList.toggle('active',j===i));
+  slides.forEach((s,j)=>{
+    s.classList.toggle('active',j===i);
+    s.classList.remove('animate-in');
+  });
   dots.forEach((d,j)=>d.classList.toggle('active',j===i));
   document.getElementById('slideNo').textContent=String(i+1).padStart(2,'0');
   document.getElementById('slideTitle').textContent=slides[i].dataset.title||'';
+  requestAnimationFrame(()=>requestAnimationFrame(()=>slides[i].classList.add('animate-in')));
 }
 function next(){go(current+1)} function prev(){go(current-1)}
 document.getElementById('nextBtn').onclick=next;
