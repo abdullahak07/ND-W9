@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COMP6012 Week 9 · Defense Engineering Lab</title>
+<meta name="theme-color" content="#f2efe7">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="progress"></div>
+<aside class="rail">
+  <div class="course">COMP6012 · WEEK 9</div>
+  <h1>Defense<br>Engineering Lab</h1>
+  <div class="live"><i></i> CLASS SYSTEM ONLINE</div>
+  <nav>
+    <a href="#brief">Mission Brief</a>
+    <a href="#cia">CIA Builder</a>
+    <a href="#pitfalls">Failure Board</a>
+    <a href="#monitoring">Monitoring Lab</a>
+    <a href="#vuln">Vulnerability Triage</a>
+    <a href="#protect">Data Protection</a>
+    <a href="#endpoint">Endpoint Fleet</a>
+    <a href="#breach">Breach Replay</a>
+    <a href="#final">Final Check</a>
+  </nav>
+  <p class="rail-note">Week 9 question: can your controls stop a breach before the attacker reaches the data?</p>
+</aside>
+<main>
+<header class="topbar">
+  <span>DEFENSE BLUEPRINT / LIVE CLASS</span>
+  <div><b>C</b><b>I</b><b>A</b><b>CVSS</b><b>ENDPOINT</b></div>
+</header>
+<section id="brief" class="hero">
+  <div class="hero-copy">
+    <div class="kicker">EFFECTIVE DEFENSE TACTICS & DATA PROTECTION</div>
+    <h2>Build the shield<br>before the breach.</h2>
+    <p>Threat intelligence only works when it sits on top of a defensible environment. This lecture treats security as an engineering problem: protect confidentiality, integrity and availability, monitor what changes, prioritise vulnerabilities, protect the data itself, and control the endpoints that touch it.</p>
+    <div class="outcomes">
+      <article><b>01</b><span>Diagnose defence failures</span></article>
+      <article><b>02</b><span>Monitor & analyse activity</span></article>
+      <article><b>03</b><span>Prioritise vulnerabilities</span></article>
+      <article><b>04</b><span>Protect data & endpoints</span></article>
+    </div>
+  </div>
+  <div class="blueprint">
+    <div class="bp-title">DEFENSE STACK · CLICK A LAYER</div>
+    <button data-layer="Identity"><span>01</span>Identity & access</button>
+    <button data-layer="Monitoring"><span>02</span>Monitoring & analytics</button>
+    <button data-layer="Vulnerability"><span>03</span>Vulnerability management</button>
+    <button data-layer="Data"><span>04</span>Data protection</button>
+    <button data-layer="Endpoint"><span>05</span>Endpoint control</button>
+    <div id="layerReadout">Every layer must support the CIA triad.</div>
+  </div>
+</section>
+
+<div id="partA"></div>
+<div id="partB"></div>
+
+<section id="final" class="zone final-zone">
+  <div class="section-kicker">FINAL · DEFENSE REVIEW</div>
+  <div class="section-head">
+    <h2>Would your design survive?</h2>
+    <p>Answer the final decisions across CIA, monitoring, vulnerability management, data protection and endpoint control.</p>
+  </div>
+  <div id="finalQuiz"></div>
+</section>
+<footer>COMP6012 · Cyber Threat Intelligence · Week 9 · Effective Defense Tactics and Data Protection</footer>
+</main>
+<script src="content-a.js"></script>
+<script src="content-b.js"></script>
+<script src="app.js"></script>
+<script src="quiz.js"></script>
+</body>
+</html>
