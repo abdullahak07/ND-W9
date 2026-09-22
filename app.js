@@ -12,14 +12,17 @@ const dots=[...dotsHost.children];
 
 function go(i){
   i=Math.max(0,Math.min(slides.length-1,i));
+  const direction=i>current?'forward':i<current?'backward':'same';
   current=i;
   slides.forEach((s,j)=>{
     s.classList.toggle('active',j===i);
-    s.classList.remove('animate-in');
+    s.classList.remove('animate-in','from-forward','from-backward');
   });
   dots.forEach((d,j)=>d.classList.toggle('active',j===i));
   document.getElementById('slideNo').textContent=String(i+1).padStart(2,'0');
   document.getElementById('slideTitle').textContent=slides[i].dataset.title||'';
+  if(direction==='forward') slides[i].classList.add('from-forward');
+  if(direction==='backward') slides[i].classList.add('from-backward');
   requestAnimationFrame(()=>requestAnimationFrame(()=>slides[i].classList.add('animate-in')));
 }
 function next(){go(current+1)} function prev(){go(current-1)}
