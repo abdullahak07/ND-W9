@@ -1,80 +1,86 @@
-document.getElementById('partB').innerHTML = `
-<section id="protect" class="zone">
-  <div class="section-kicker">LAB 05 · DATA PROTECTION</div>
-  <div class="section-head">
-    <h2>Protect the data even after access is granted.</h2>
-    <p>Data protection follows information in transit and at rest. The lecture combines encryption with tokenisation, masking and quarantining so one failed control does not automatically expose the underlying data.</p>
-  </div>
-  <div class="protection-lab">
-    <div class="data-card">
-      <div class="badge orange">SENSITIVE RECORD</div>
-      <div id="fakeData" class="fake-data">NAME: ALEX MORGAN<br>CARD: 5412 7788 9911 4207<br>SALARY: $148,000<br>ACCOUNT: AU-92217</div>
-      <div class="protection-buttons">
-        <button data-protect="encrypt">Encrypt</button>
-        <button data-protect="token">Tokenise</button>
-        <button data-protect="mask">Mask</button>
-        <button data-protect="quarantine">Quarantine request</button>
+document.getElementById('partB').innerHTML=`
+<section id="protect" class="chapter">
+  <div class="chapter-no">05</div>
+  <div class="chapter-main">
+    <div class="eyebrow">PROTECT THE DATA ITSELF</div>
+    <h2>Assume access controls can fail.</h2>
+    <p class="intro">The lecture adds protection directly to data: encryption in transit and at rest, tokenisation, masking, and quarantining suspicious requests.</p>
+
+    <div class="protect-stage">
+      <div class="record">
+        <span class="tape red">SENSITIVE RECORD</span>
+        <pre id="record">NAME: ALEX MORGAN
+CARD: 5412 7788 9911 4207
+SALARY: $148,000
+ACCOUNT: AU-92217</pre>
+        <div class="decision-row">
+          <button data-protect="encrypt">ENCRYPT</button>
+          <button data-protect="token">TOKENISE</button>
+          <button data-protect="mask">MASK</button>
+          <button data-protect="quarantine">QUARANTINE</button>
+        </div>
+      </div>
+      <div id="protectNote">
+        <div class="strip"><b>IN TRANSIT</b><p>TLS supersedes SSL; the lecture points to HTTPS, FTPS and SSH as secure equivalents for moving data.</p></div>
+        <div class="strip"><b>AT REST</b><p>Encrypt sensitive data before storage, encrypt the storage layer, or use both.</p></div>
+        <div class="strip"><b>TOKENISATION</b><p>Replace sensitive values with random tokens while the real value remains protected in a token vault.</p></div>
+        <div class="strip"><b>MASKING</b><p>Reveal only the portion a role needs to see.</p></div>
       </div>
     </div>
-    <div id="protectExplain" class="card">
-      <div class="badge blue">CONTROL EXPLAINER</div>
-      <h3>Choose a protection mechanism</h3>
-      <p><b>Encryption:</b> protects data using reversible cryptography when authorised keys are available.</p>
-      <p><b>Tokenisation:</b> replaces sensitive data with a random token while the real value remains protected in a token vault.</p>
-      <p><b>Masking:</b> reveals only the portion a user actually needs.</p>
-      <p><b>Quarantining:</b> stops suspicious access, logs activity and alerts defenders.</p>
+
+    <div class="checkpoint" data-answer="2"><div class="q">Which control changes what a user can see without replacing the original sensitive value with a token?</div><button>Active monitoring</button><button>Tokenisation</button><button>Masking</button><div class="feedback"></div></div>
+  </div>
+</section>
+
+<section id="fleet" class="chapter">
+  <div class="chapter-no">06</div>
+  <div class="chapter-main">
+    <div class="eyebrow">ENDPOINT MANAGEMENT</div>
+    <h2>The perimeter now walks around in a pocket.</h2>
+    <p class="intro">Only authorised devices meeting minimum requirements should connect. Endpoint management must enforce device policy, user access, credentials, patching and continuous integration with SIEM/TIP.</p>
+
+    <div class="fleet">
+      <div class="device"><span class="tape green">MANAGED</span><h3>Finance laptop</h3><p>Patched Windows device, MFA enabled, organisation-managed.</p><button data-device="allow">Evaluate</button></div>
+      <div class="device"><span class="tape">REVIEW</span><h3>Personal Android</h3><p>Personal phone, outdated security patch, employee-owned.</p><button data-device="review">Evaluate</button></div>
+      <div class="device"><span class="tape red">HIGH RISK</span><h3>Jailbroken iPhone</h3><p>OS restrictions bypassed.</p><button data-device="block">Evaluate</button></div>
+      <div class="device"><span class="tape blue">CRITICAL</span><h3>Warehouse POS</h3><p>Managed payment endpoint handling sensitive card transactions.</p><button data-device="allow">Evaluate</button></div>
     </div>
+    <div id="deviceNote" class="stage-readout">Select a device. Policy should consider endpoint type, OS, patch state, credentials and business risk.</div>
+
+    <div class="strip"><b>MOBILE RISK</b><p>Rooting/jailbreaking, weaponised or over-permissioned applications, social engineering, malicious files and MITM attacks all increase endpoint risk.</p></div>
+    <div class="strip"><b>AUTOMATION</b><p>The volume and diversity of endpoints makes manual control impractical; policy enforcement must be automated.</p></div>
+    <div class="strip"><b>PATCHING</b><p>A reliable endpoint strategy should enforce major software patches across supported device and operating-system types.</p></div>
+    <div class="strip"><b>FLEXIBILITY</b><p>Security must tighten the environment without making legitimate work impossible.</p></div>
+
+    <div class="checkpoint" data-answer="0"><div class="q">Which device should be blocked most clearly under the lecture's mobile-security logic?</div><button>A jailbroken device bypassing OS restrictions</button><button>A patched managed laptop</button><button>A compliant managed POS terminal</button><div class="feedback"></div></div>
   </div>
-  <div class="grid2" style="margin-top:14px">
-    <div class="card"><div class="badge green">IN TRANSIT</div><h3>TLS and secure protocol equivalents</h3><p>Protect moving data with TLS and secure protocols such as HTTPS, FTPS and SSH rather than HTTP, FTP and Telnet. The lecture highlights man-in-the-middle and downgrade risk and recommends strict transport security.</p></div>
-    <div class="card"><div class="badge blue">AT REST</div><h3>Encrypt the data, storage, or both</h3><p>Sensitive information can be encrypted before storage, the storage layer itself can be encrypted, or both approaches can be combined while preserving usability.</p></div>
-  </div>
-  <div class="check" data-answer="1"><div class="q">Which mechanism replaces sensitive data with a random stand-in value while the original stays protected elsewhere?</div><button>Masking</button><button>Tokenisation</button><button>Passive monitoring</button><div class="feedback"></div></div>
 </section>
 
-<section id="endpoint" class="zone">
-  <div class="section-kicker">LAB 06 · ENDPOINT FLEET</div>
-  <div class="section-head">
-    <h2>Every device is part of the perimeter.</h2>
-    <p>Only authorised endpoints that meet minimum security requirements should connect. Endpoint management must be automated, policy-driven, logged and integrated because laptops, phones, printers, tablets and industrial systems all expand the attack surface.</p>
-  </div>
-  <div class="endpoint-grid">
-    <div class="device"><strong>Finance Laptop</strong><small>Windows · patched · MFA · managed</small><button data-device="ok">Evaluate</button></div>
-    <div class="device"><strong>Personal Phone</strong><small>Android · outdated patch · personal device</small><button data-device="review">Evaluate</button></div>
-    <div class="device"><strong>Jailbroken iPhone</strong><small>iOS restrictions bypassed</small><button data-device="block">Evaluate</button></div>
-    <div class="device"><strong>Warehouse POS</strong><small>Managed · critical payment endpoint</small><button data-device="ok">Evaluate</button></div>
-  </div>
-  <div id="deviceReadout" class="card dark" style="margin-top:10px"><p>Evaluate an endpoint against policy: device type, OS, patch state, credentials, risk and whether it should be allowed to access critical assets.</p></div>
-  <div class="grid3" style="margin-top:14px">
-    <div class="card"><h3>Permission control</h3><p>Choose which endpoint types, models and operating systems are allowed to connect.</p></div>
-    <div class="card"><h3>Credential enforcement</h3><p>Apply password policy, key pairs and MFA at the endpoint level.</p></div>
-    <div class="card"><h3>Patch & compliance</h3><p>Enforce major software patches, identify policy violations automatically and send changes to SIEM/TIP.</p></div>
-  </div>
-  <div class="grid2" style="margin-top:14px">
-    <div class="card"><div class="badge red">MOBILE THREATS</div><h3>Rooting, apps, social engineering</h3><p>Rooted or jailbroken devices bypass OS restrictions. Weaponised or over-permissioned applications, cloned sites, malicious files and network MITM attacks all create mobile risk.</p></div>
-    <div class="card"><div class="badge green">MOBILE RESPONSE</div><h3>Identify and block risky devices</h3><p>Use device ID, IMEI, model and manufacturer to identify risky endpoints, then block them when policy says the risk is too high. Strong enterprise wireless protection and user education reduce network exposure.</p></div>
-  </div>
-  <div class="check" data-answer="2"><div class="q">Why must endpoint management be automated?</div><button>Because endpoints never change</button><button>Because automation replaces all policy</button><button>Because the number and variety of endpoints make manual control impractical</button><div class="feedback"></div></div>
-</section>
+<section id="replay" class="chapter">
+  <div class="chapter-no">07</div>
+  <div class="chapter-main">
+    <div class="eyebrow">HOME DEPOT BREACH REPLAY</div>
+    <h2>Now place the controls before the attacker moves.</h2>
+    <p class="intro">The lecture's Home Depot case ties the whole week together: stolen third-party credentials, network movement, endpoint malware, large-scale exfiltration, and a long detection delay.</p>
 
-<section id="breach" class="zone">
-  <div class="section-kicker">CASE REPLAY · HOME DEPOT</div>
-  <div class="section-head">
-    <h2>Where could the breach have been stopped?</h2>
-    <p>The Home Depot case in the lecture ties the whole defensive stack together: third-party credentials, a network pivot, endpoint malware, weak monitoring and insufficient segmentation combined into a large payment-data breach.</p>
+    <div class="replay">
+      <div class="step"><div class="num">1</div><h3>Vendor credentials stolen</h3><p>Attackers obtained third-party credentials.</p><button data-stop="mfa">Place control</button></div>
+      <div class="step"><div class="num">2</div><h3>Vendor access abused</h3><p>Those credentials were used to access the connected environment.</p><button data-stop="least">Place control</button></div>
+      <div class="step"><div class="num">3</div><h3>Windows pivot</h3><p>A Windows zero-day enabled movement into the corporate network.</p><button data-stop="segment">Place control</button></div>
+      <div class="step"><div class="num">4</div><h3>POS malware deployed</h3><p>Memory-scraping malware reached more than 7,000 POS terminals.</p><button data-stop="endpoint">Place control</button></div>
+      <div class="step"><div class="num">5</div><h3>Mass exfiltration</h3><p>Payment-card and email data were stolen at scale.</p><button data-stop="monitor">Place control</button></div>
+    </div>
+    <div id="replayNote" class="stage-readout">Choose any stage to place a defensive control. The objective is containment, not pretending one control could have guaranteed prevention.</div>
+
+    <div class="three-col" style="margin-top:18px">
+      <div><span class="tape red">56M</span><h3>Credit cards</h3><p>The lecture reports data associated with 56 million payment cards was stolen.</p></div>
+      <div><span class="tape">53M</span><h3>Email addresses</h3><p>Around 53 million customer email addresses were also affected.</p></div>
+      <div><span class="tape blue">5 MONTHS</span><h3>Detection delay</h3><p>The compromise began in April 2014 and was discovered in September 2014.</p></div>
+    </div>
+
+    <div class="strip"><b>PREVENTION THEMES</b><p>Secure POS configuration, point-to-point encryption, OS upgrades, VLAN segmentation, vulnerability assessment and monitoring feeding SIEM/TIP.</p></div>
+
+    <div class="checkpoint" data-answer="2"><div class="q">What does the Home Depot case demonstrate most clearly?</div><button>Only endpoint malware matters</button><button>Encryption alone is sufficient</button><button>Several defensive gaps can combine into one large breach</button><div class="feedback"></div></div>
   </div>
-  <div class="timeline">
-    <div class="event"><b>STEP 1</b><h3>Vendor credentials stolen</h3><p>Attackers obtained third-party credentials.</p><button data-stop="identity">Insert control</button></div>
-    <div class="event"><b>STEP 2</b><h3>Vendor access abused</h3><p>Credentials were used to enter the vendor-connected environment.</p><button data-stop="access">Insert control</button></div>
-    <div class="event"><b>STEP 3</b><h3>Windows pivot</h3><p>A Windows zero-day enabled movement into the corporate network.</p><button data-stop="segment">Insert control</button></div>
-    <div class="event"><b>STEP 4</b><h3>POS malware deployed</h3><p>Memory-scraping malware reached more than 7,000 POS terminals.</p><button data-stop="endpoint">Insert control</button></div>
-    <div class="event"><b>STEP 5</b><h3>Mass exfiltration</h3><p>Payment and email data were stolen at massive scale.</p><button data-stop="monitor">Insert control</button></div>
-  </div>
-  <div id="breachReadout" class="card dark" style="margin-top:10px"><p>Choose an intervention point. The lecture's prevention themes include secure POS configuration, point-to-point encryption, OS upgrades, network segmentation, frequent assessment, stronger credential management and monitoring feeding SIEM/TIP.</p></div>
-  <div class="grid2" style="margin-top:14px">
-    <div class="card"><div class="badge red">WHAT FAILED</div><h3>Multiple controls at once</h3><p>Vulnerable POS endpoints, poor vulnerability management, weak access/credential management, weak data/network monitoring and poor network design all contributed.</p></div>
-    <div class="card"><div class="badge green">WHAT COULD HELP</div><h3>Layered prevention</h3><p>Secure POS configuration, P2PE, OS upgrades, VLAN segmentation and a monitoring/TI program could have reduced likelihood, impact or time-to-detection.</p></div>
-  </div>
-  <div class="check" data-answer="0"><div class="q">What is the central lesson of the Home Depot case?</div><button>A major breach can emerge from several defensive gaps interacting together</button><button>Encryption alone prevents every endpoint compromise</button><button>Third-party access is always safe</button><div class="feedback"></div></div>
 </section>
 `;
