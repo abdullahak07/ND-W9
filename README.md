@@ -1,7 +1,7 @@
-# COMP6012 Week 9 — Effective Defense Tactics and Data Protection
+# COMP6012 Week 9 — Breach Prevention Tabletop
 
-Interactive lecture website built from the supplied Week 9 lecture deck.
+A complete visual and structural overhaul of the Week 9 lecture website.
 
-Concept: **Defense Engineering Lab** — a blueprint-style classroom experience where students build a defensive stack, inspect common failure patterns, compare active/passive monitoring, triage vulnerabilities with a CVSS-style model, choose data-protection controls, manage endpoints, and replay the Home Depot breach.
+This version deliberately avoids the previous sidebar/hero/card/lab pattern. It is built as a full-width **breach-prevention tabletop exercise** with editorial poster styling, a horizontal attack chain, large numbered chapters, decision strips, incident replay, control placement, vulnerability triage, data-protection transformations, and endpoint policy decisions.
 
-No build step is required. Deploy directly to Vercel as a static site.
+Static and Vercel-ready. No build step required.
