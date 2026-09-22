@@ -1,15 +1,15 @@
-const questions=[
-['Which principle says users should receive only the access genuinely needed for their role?',['Least privilege','Maximum availability','Open access'],0],
-['Why did the James/John/Molly example expose a defence gap?',['The system could not distinguish different people using the same credentials','The database had no backups','The network had no router'],0],
-['Which monitoring model can directly block or quarantine traffic?',['Passive','Active','Archived'],1],
-['What comes after identifying a vulnerability in the lecture scan lifecycle?',['Ignore it','Analyse it and determine root cause/component','Delete all logs'],1],
-['Which assessment gives the tester complete system information?',['White box','Black box','Gray box'],0],
-['Which lecture CVSS range is Critical?',['4.0–6.9','7.0–8.9','9.0–10.0'],2],
-['Which control replaces sensitive data with a random stand-in value?',['Tokenisation','Passive monitoring','Beaconing'],0],
-['Why is endpoint automation essential?',['The number and variety of endpoints make manual control impractical','Endpoints never require patches','Automation removes the need for policy'],0],
-['What did the Home Depot case mainly demonstrate?',['One encryption product can prevent every breach','Multiple gaps in credentials, segmentation, endpoints, vulnerability management and monitoring can combine','Third-party access carries no risk'],1]
+const qs=[
+['What does least privilege mean?',['Give every user broad access for convenience','Give only the access genuinely needed for the role','Allow access only during backups'],1],
+['Why could James, John and Molly appear identical to the system?',['They used the same account identity','They used the same laptop model','They were all administrators'],0],
+['Which monitoring model can block or quarantine live traffic?',['Active','Passive','Archived'],0],
+['What is the vulnerability-management cycle intended to do?',['Scan once and stop','Continuously identify, analyse, assess, remediate and rescan','Replace patch management'],1],
+['What lecture score range is Critical?',['4.0–6.9','7.0–8.9','9.0–10.0'],2],
+['What does tokenisation do?',['Replaces sensitive values with stand-in tokens','Makes every user an administrator','Creates a backup copy'],0],
+['What does masking do?',['Shows only the data portion a role needs','Deletes the original data','Disables encryption'],0],
+['Why should a jailbroken mobile device be treated as high risk?',['It bypasses operating-system restrictions','It always has a small screen','It cannot use Wi-Fi'],0],
+['What is the main lesson from the Home Depot case?',['One missing firewall caused everything','Several defensive gaps interacted across credentials, network, endpoints and monitoring','Third-party access is low risk'],1]
 ];
 let done=0,score=0;const host=document.getElementById('finalQuiz');
-questions.forEach((q,i)=>{const d=document.createElement('div');d.className='quiz';d.innerHTML='<h3>'+(i+1)+'. '+q[0]+'</h3>';q[1].forEach((o,j)=>{const b=document.createElement('button');b.textContent=o;b.onclick=()=>{if(d.dataset.done)return;d.dataset.done='1';done++;const bs=[...d.querySelectorAll('button')];bs.forEach(x=>x.disabled=true);if(j===q[2]){score++;b.classList.add('correct')}else{b.classList.add('wrong');bs[q[2]].classList.add('correct')}render()};d.appendChild(b)});host.appendChild(d)});
-const result=document.createElement('div');result.className='result';result.textContent='Complete all 9 decisions to see your final score.';host.appendChild(result);
-function render(){if(done<questions.length){result.textContent=done+'/9 complete · current score '+score;return}const p=Math.round(score/questions.length*100);result.innerHTML='Final score: '+score+'/9 ('+p+'%)<br><span style="font-weight:600">'+(p>=85?'Defense review passed: strong understanding across the stack.':p>=60?'Good base: revisit the missed labs before class ends.':'Rebuild the defensive stack from CIA through endpoints, then try again.')+'</span>'}
+qs.forEach((q,i)=>{const d=document.createElement('div');d.className='quiz';d.innerHTML='<h3>'+(i+1)+'. '+q[0]+'</h3>';q[1].forEach((o,j)=>{const b=document.createElement('button');b.textContent=o;b.onclick=()=>{if(d.dataset.done)return;d.dataset.done='1';done++;const bs=[...d.querySelectorAll('button')];bs.forEach(x=>x.disabled=true);if(j===q[2]){score++;b.classList.add('correct')}else{b.classList.add('wrong');bs[q[2]].classList.add('correct')}render()};d.appendChild(b)});host.appendChild(d)});
+const res=document.createElement('div');res.className='final-result';res.textContent='Complete all 9 decisions to reveal your final score.';host.appendChild(res);
+function render(){if(done<qs.length){res.textContent=done+'/9 complete · current score '+score;return}const p=Math.round(score/qs.length*100);res.innerHTML='FINAL SCORE '+score+'/9 · '+p+'%<br><span style="font-weight:600">'+(p>=85?'Strong defensive reasoning across the full stack.':p>=60?'Good foundation — revisit the missed chapter decisions.':'Re-run the tabletop from CIA through breach replay, then try again.')+'</span>'}
