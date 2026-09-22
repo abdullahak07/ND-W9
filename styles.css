@@ -189,3 +189,162 @@ button:active:not(:disabled){transform:translateY(0) scale(.985)}
 }
 .railnav #dots button.active{animation:pulseDot 1.8s ease-in-out infinite}
 .keys b{animation:arrowNudge 1.2s ease-in-out infinite!important}
+
+/* --- Heavy cinematic animation mode --- */
+@keyframes cinematicForward{
+  0%{opacity:0;transform:translateY(70px) scale(.94) rotateX(3deg);filter:blur(8px)}
+  65%{opacity:1;transform:translateY(-6px) scale(1.01) rotateX(0);filter:blur(0)}
+  100%{opacity:1;transform:none;filter:none}
+}
+@keyframes cinematicBackward{
+  0%{opacity:0;transform:translateY(-70px) scale(.94) rotateX(-3deg);filter:blur(8px)}
+  65%{opacity:1;transform:translateY(6px) scale(1.01) rotateX(0);filter:blur(0)}
+  100%{opacity:1;transform:none;filter:none}
+}
+@keyframes titleImpact{
+  0%{opacity:0;transform:translateX(-70px) skewX(-6deg);letter-spacing:-.12em}
+  70%{opacity:1;transform:translateX(7px) skewX(1deg)}
+  100%{transform:none}
+}
+@keyframes visualImpact{
+  0%{opacity:0;transform:translateX(85px) scale(.9);filter:blur(6px)}
+  70%{opacity:1;transform:translateX(-6px) scale(1.01);filter:blur(0)}
+  100%{transform:none;filter:none}
+}
+@keyframes cardBlast{
+  0%{opacity:0;transform:translateY(32px) rotate(-1.2deg) scale(.9)}
+  70%{opacity:1;transform:translateY(-5px) rotate(.25deg) scale(1.015)}
+  100%{transform:none}
+}
+@keyframes glowOrbit{
+  0%{transform:translate3d(0,0,0) scale(1);opacity:.18}
+  33%{transform:translate3d(-70px,25px,0) scale(1.12);opacity:.36}
+  66%{transform:translate3d(-30px,-35px,0) scale(.96);opacity:.26}
+  100%{transform:translate3d(0,0,0) scale(1);opacity:.18}
+}
+@keyframes lineSweepHeavy{
+  0%{transform:scaleX(0);opacity:.4}
+  55%{transform:scaleX(1.06);opacity:1}
+  100%{transform:scaleX(1);opacity:.72}
+}
+@keyframes pulseStrong{
+  0%,100%{box-shadow:0 0 0 rgba(246,200,76,0),0 0 0 rgba(246,200,76,0)}
+  50%{box-shadow:0 0 35px rgba(246,200,76,.26),0 0 70px rgba(246,200,76,.10)}
+}
+@keyframes scanHeavy{
+  0%{transform:translateX(-140%)}
+  100%{transform:translateX(520%)}
+}
+@keyframes barDance{
+  0%,100%{transform:scaleY(.82)}
+  50%{transform:scaleY(1.08)}
+}
+@keyframes breachPulse{
+  0%{box-shadow:0 0 0 0 rgba(91,191,136,.35)}
+  100%{box-shadow:0 0 0 18px rgba(91,191,136,0)}
+}
+@keyframes quizReveal{
+  from{opacity:0;transform:translateX(36px)}
+  to{opacity:1;transform:none}
+}
+
+.slide.from-forward.animate-in{animation:cinematicForward .7s cubic-bezier(.16,.84,.28,1) both}
+.slide.from-backward.animate-in{animation:cinematicBackward .7s cubic-bezier(.16,.84,.28,1) both}
+
+.slide.animate-in:before{animation:lineSweepHeavy .8s cubic-bezier(.2,.8,.2,1) both}
+.slide.animate-in:after{
+  width:520px;height:520px;
+  background:radial-gradient(circle,rgba(246,200,76,.16),rgba(246,200,76,0) 70%);
+  animation:glowOrbit 7s ease-in-out infinite;
+}
+
+.slide.animate-in .scene-copy h2,
+.slide.animate-in .intro-left h1,
+.slide.animate-in .quiz-left h2{
+  animation:titleImpact .72s .06s cubic-bezier(.16,.84,.28,1) both!important;
+}
+.slide.animate-in .visual-stage,
+.slide.animate-in .intro-right,
+.slide.animate-in .quiz-right{
+  animation:visualImpact .75s .08s cubic-bezier(.16,.84,.28,1) both!important;
+}
+
+.slide.animate-in .triptych>div,
+.slide.animate-in .failure-stack>div,
+.slide.animate-in .identity-strip>button,
+.slide.animate-in .endpoint-list>.device,
+.slide.animate-in .breach-line>.breach-step,
+.slide.animate-in .chain>div{
+  animation:cardBlast .62s cubic-bezier(.16,.84,.28,1) both!important;
+}
+.slide.animate-in .triptych>div:nth-child(1),
+.slide.animate-in .failure-stack>div:nth-child(1),
+.slide.animate-in .identity-strip>button:nth-child(1),
+.slide.animate-in .endpoint-list>.device:nth-child(1),
+.slide.animate-in .breach-line>.breach-step:nth-child(1),
+.slide.animate-in .chain>div:nth-child(1){animation-delay:.16s!important}
+.slide.animate-in .triptych>div:nth-child(2),
+.slide.animate-in .failure-stack>div:nth-child(2),
+.slide.animate-in .identity-strip>button:nth-child(2),
+.slide.animate-in .endpoint-list>.device:nth-child(2),
+.slide.animate-in .breach-line>.breach-step:nth-child(2),
+.slide.animate-in .chain>div:nth-child(2){animation-delay:.28s!important}
+.slide.animate-in .triptych>div:nth-child(3),
+.slide.animate-in .failure-stack>div:nth-child(3),
+.slide.animate-in .identity-strip>button:nth-child(3),
+.slide.animate-in .endpoint-list>.device:nth-child(3),
+.slide.animate-in .breach-line>.breach-step:nth-child(3),
+.slide.animate-in .chain>div:nth-child(3){animation-delay:.40s!important}
+.slide.animate-in .failure-stack>div:nth-child(4),
+.slide.animate-in .endpoint-list>.device:nth-child(4),
+.slide.animate-in .breach-line>.breach-step:nth-child(4),
+.slide.animate-in .chain>div:nth-child(4){animation-delay:.52s!important}
+.slide.animate-in .failure-stack>div:nth-child(5),
+.slide.animate-in .breach-line>.breach-step:nth-child(5),
+.slide.animate-in .chain>div:nth-child(5){animation-delay:.64s!important}
+
+.slide.animate-in .readout,
+.slide.animate-in .case-banner{animation:pulseStrong 2.2s ease-in-out infinite}
+.slide.animate-in .scorebox{animation:pulseStrong 2.8s ease-in-out infinite}
+.slide.animate-in .scorebox .score{animation:scorePop .72s .24s cubic-bezier(.16,.84,.28,1) both!important}
+
+.slide.animate-in .scope:after{
+  width:120px!important;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)!important;
+  animation:scanHeavy 2.7s linear infinite!important;
+}
+.slide.animate-in .scope i{
+  animation:barDance 1.9s ease-in-out infinite;
+  transform-origin:bottom;
+}
+.slide.animate-in .scope i:nth-child(4n){animation-delay:.2s}
+.slide.animate-in .scope i:nth-child(4n+1){animation-delay:.5s}
+.slide.animate-in .scope i:nth-child(4n+2){animation-delay:.8s}
+.slide.animate-in .scope i:nth-child(4n+3){animation-delay:1.1s}
+
+.breach-step.stopped,
+.device.block{animation:breachPulse 1.15s ease-out 2,pulseStrong 2.4s ease-in-out infinite}
+
+.slide.animate-in .quiz-right .quiz{
+  animation:quizReveal .45s ease both;
+}
+.slide.animate-in .quiz-right .quiz:nth-child(1){animation-delay:.10s}
+.slide.animate-in .quiz-right .quiz:nth-child(2){animation-delay:.16s}
+.slide.animate-in .quiz-right .quiz:nth-child(3){animation-delay:.22s}
+.slide.animate-in .quiz-right .quiz:nth-child(4){animation-delay:.28s}
+.slide.animate-in .quiz-right .quiz:nth-child(5){animation-delay:.34s}
+.slide.animate-in .quiz-right .quiz:nth-child(6){animation-delay:.40s}
+.slide.animate-in .quiz-right .quiz:nth-child(7){animation-delay:.46s}
+.slide.animate-in .quiz-right .quiz:nth-child(8){animation-delay:.52s}
+.slide.animate-in .quiz-right .quiz:nth-child(9){animation-delay:.58s}
+
+button:hover:not(:disabled){
+  transform:translateY(-3px) scale(1.025)!important;
+  box-shadow:0 10px 22px rgba(0,0,0,.18);
+}
+button:active:not(:disabled){transform:translateY(0) scale(.97)!important}
+.railnav #dots button.active{animation:pulseStrong 1.5s ease-in-out infinite!important}
+
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
