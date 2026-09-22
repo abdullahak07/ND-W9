@@ -84,3 +84,108 @@ button:active:not(:disabled){transform:translateY(0) scale(.985)}
 @media (prefers-reduced-motion:reduce){
   *,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* --- Visible but restrained slide motion --- */
+@keyframes sceneWipe{0%{transform:scaleX(0);opacity:0}100%{transform:scaleX(1);opacity:1}}
+@keyframes driftGlow{0%,100%{transform:translate3d(0,0,0);opacity:.24}50%{transform:translate3d(-38px,24px,0);opacity:.38}}
+@keyframes riseStrong{0%{opacity:0;transform:translateY(34px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes slideStrong{0%{opacity:0;transform:translateX(42px)}100%{opacity:1;transform:translateX(0)}}
+@keyframes popStrong{0%{opacity:0;transform:scale(.86)}75%{opacity:1;transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes scanLine{0%{transform:translateX(-120%)}100%{transform:translateX(420%)}}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(246,200,76,.18)}50%{box-shadow:0 0 0 8px rgba(246,200,76,0)}}
+
+.slide:before{
+  content:"";
+  position:absolute;
+  left:clamp(36px,6vw,95px);
+  right:clamp(36px,6vw,95px);
+  top:18px;
+  height:2px;
+  background:linear-gradient(90deg,#f6c84c 0 18%,#3a3e47 18% 100%);
+  transform-origin:left;
+  opacity:0;
+  pointer-events:none;
+}
+.slide:after{
+  content:"";
+  position:absolute;
+  width:360px;height:360px;border-radius:50%;
+  right:-90px;bottom:-120px;
+  background:radial-gradient(circle,rgba(246,200,76,.1),rgba(246,200,76,0) 68%);
+  opacity:0;
+  pointer-events:none;
+}
+.slide.animate-in:before{animation:sceneWipe .7s ease both}
+.slide.animate-in:after{animation:driftGlow 7s ease-in-out infinite}
+
+.slide.animate-in .eyebrow,
+.slide.animate-in .scene-copy .num,
+.slide.animate-in .scene-copy h2,
+.slide.animate-in .scene-copy>p,
+.slide.animate-in .memory,
+.slide.animate-in .intro-left h1,
+.slide.animate-in .intro-left>p,
+.slide.animate-in .keys,
+.slide.animate-in .quiz-left h2,
+.slide.animate-in .quiz-left>p{
+  animation:riseStrong .55s ease both;
+}
+.slide.animate-in .scene-copy .num{animation-delay:.03s}
+.slide.animate-in .scene-copy h2,
+.slide.animate-in .intro-left h1,
+.slide.animate-in .quiz-left h2{animation-delay:.10s}
+.slide.animate-in .scene-copy>p,
+.slide.animate-in .intro-left>p,
+.slide.animate-in .quiz-left>p{animation-delay:.18s}
+.slide.animate-in .memory,
+.slide.animate-in .keys{animation-delay:.27s}
+
+.slide.animate-in .visual-stage,
+.slide.animate-in .intro-right,
+.slide.animate-in .quiz-right{
+  animation:slideStrong .6s .12s ease both;
+}
+
+.slide.animate-in .triptych>div,
+.slide.animate-in .failure-stack>div,
+.slide.animate-in .identity-strip>button,
+.slide.animate-in .endpoint-list>.device,
+.slide.animate-in .breach-line>.breach-step,
+.slide.animate-in .chain>div{
+  animation:popStrong .5s ease both;
+}
+.slide.animate-in .triptych>div:nth-child(1),
+.slide.animate-in .failure-stack>div:nth-child(1),
+.slide.animate-in .identity-strip>button:nth-child(1),
+.slide.animate-in .endpoint-list>.device:nth-child(1),
+.slide.animate-in .breach-line>.breach-step:nth-child(1),
+.slide.animate-in .chain>div:nth-child(1){animation-delay:.16s}
+.slide.animate-in .triptych>div:nth-child(2),
+.slide.animate-in .failure-stack>div:nth-child(2),
+.slide.animate-in .identity-strip>button:nth-child(2),
+.slide.animate-in .endpoint-list>.device:nth-child(2),
+.slide.animate-in .breach-line>.breach-step:nth-child(2),
+.slide.animate-in .chain>div:nth-child(2){animation-delay:.24s}
+.slide.animate-in .triptych>div:nth-child(3),
+.slide.animate-in .failure-stack>div:nth-child(3),
+.slide.animate-in .identity-strip>button:nth-child(3),
+.slide.animate-in .endpoint-list>.device:nth-child(3),
+.slide.animate-in .breach-line>.breach-step:nth-child(3),
+.slide.animate-in .chain>div:nth-child(3){animation-delay:.32s}
+.slide.animate-in .failure-stack>div:nth-child(4),
+.slide.animate-in .endpoint-list>.device:nth-child(4),
+.slide.animate-in .breach-line>.breach-step:nth-child(4),
+.slide.animate-in .chain>div:nth-child(4){animation-delay:.40s}
+.slide.animate-in .failure-stack>div:nth-child(5),
+.slide.animate-in .breach-line>.breach-step:nth-child(5),
+.slide.animate-in .chain>div:nth-child(5){animation-delay:.48s}
+
+.slide.animate-in .scorebox .score{animation:popStrong .65s .25s ease both}
+.slide.animate-in .scope{position:relative;overflow:hidden}
+.slide.animate-in .scope:after{
+  content:"";position:absolute;top:0;bottom:0;width:70px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.09),transparent);
+  animation:scanLine 4s linear infinite;
+}
+.railnav #dots button.active{animation:pulseDot 1.8s ease-in-out infinite}
+.keys b{animation:arrowNudge 1.2s ease-in-out infinite!important}
