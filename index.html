@@ -2,57 +2,80 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>COMP6012 Week 9 · SecureOS</title>
-<meta name="theme-color" content="#d8ddd8">
+<title>COMP6012 Week 9 · Defense Campus</title>
+<meta name="theme-color" content="#bfe7ff">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="os">
-  <header class="menubar">
-    <div class="brandmark"><span class="logo">S</span><b>SecureOS</b><small>COMP6012 · Week 9</small></div>
-    <div class="menutitle">Effective Defense Tactics & Data Protection</div>
-    <div class="sys"><span>CLASS MODE</span><i></i><span id="clock">09:00</span></div>
-  </header>
+<div class="sky">
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+</div>
+<header class="hud">
+  <div><b>COMP6012 · WEEK 9</b><span>Effective Defense Tactics & Data Protection</span></div>
+  <button id="mapBtn">Campus Map</button>
+  <div class="hud-right"><span id="locationLabel">Central Quad</span><i></i></div>
+</header>
 
-  <main class="desktop">
-    <section id="home" class="welcome">
-      <div class="welcome-copy">
-        <span class="overline">SECURITY WORKSTATION / 09</span>
-        <h1>BUILD.<br>MONITOR.<br>CONTAIN.</h1>
-        <p>Open the tools below like a security workstation. Each app covers one part of the lecture: CIA controls, defence failures, monitoring, vulnerability triage, data protection, endpoints and the Home Depot breach.</p>
-        <div class="attack-route">
-          <button data-stage="cred">Credential theft</button><b>→</b>
-          <button data-stage="pivot">Network pivot</button><b>→</b>
-          <button data-stage="malware">Endpoint malware</button><b>→</b>
-          <button data-stage="exfil">Data exfiltration</button>
-        </div>
-        <div id="stageReadout" class="system-note">Select a breach stage to see which defensive layers matter.</div>
-      </div>
-      <div class="home-panel">
-        <div class="panel-title">DEFENSE STACK</div>
-        <div class="stack-row"><span>01</span><b>Identity & Access</b><em>Confidentiality</em></div>
-        <div class="stack-row"><span>02</span><b>Monitoring</b><em>Visibility</em></div>
-        <div class="stack-row"><span>03</span><b>Vulnerability Mgmt</b><em>Prioritisation</em></div>
-        <div class="stack-row"><span>04</span><b>Data Protection</b><em>Encryption / tokenisation</em></div>
-        <div class="stack-row"><span>05</span><b>Endpoint Control</b><em>Policy / patching</em></div>
-        <div class="panel-footer">One control can fail. Layers should overlap.</div>
-      </div>
-    </section>
+<main>
+<section id="campus" class="campus-screen">
+  <div class="campus-title">
+    <span>INTERACTIVE LECTURE CAMPUS</span>
+    <h1>DEFENSE<br>CAMPUS</h1>
+    <p>Walk through seven locations. Each building teaches one part of the lecture using a different interaction.</p>
+  </div>
 
-    <div id="apps"></div>
-  </main>
+  <div class="campus-map">
+    <svg class="paths" viewBox="0 0 1000 650" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M140 490 C250 420,310 430,390 360 S550 260,650 320 S820 420,890 260"/>
+      <path d="M390 360 C440 470,520 500,590 520"/>
+      <path d="M650 320 C680 220,760 170,850 150"/>
+    </svg>
 
-  <nav class="dock">
-    <button class="home-btn active" data-open="home"><span>⌂</span><small>Home</small></button>
-    <button data-open="ciaApp"><span>CIA</span><small>Controls</small></button>
-    <button data-open="failApp"><span>!</span><small>Failures</small></button>
-    <button data-open="monitorApp"><span>◉</span><small>Monitor</small></button>
-    <button data-open="vulnApp"><span>9.8</span><small>Triage</small></button>
-    <button data-open="protectApp"><span>◆</span><small>Protect</small></button>
-    <button data-open="endpointApp"><span>▣</span><small>Endpoints</small></button>
-    <button data-open="breachApp"><span>↯</span><small>Replay</small></button>
-    <button data-open="quizApp"><span>✓</span><small>Quiz</small></button>
-  </nav>
+    <button class="building b-cia" data-place="cia">
+      <span class="roof"></span><span class="body"></span><em>1</em><b>CIA Hall</b><small>Confidentiality · Integrity · Availability</small>
+    </button>
+    <button class="building b-fail" data-place="fail">
+      <span class="roof"></span><span class="body"></span><em>2</em><b>Failure Museum</b><small>Why defense programs break</small>
+    </button>
+    <button class="building b-monitor" data-place="monitor">
+      <span class="roof"></span><span class="body"></span><em>3</em><b>Watchtower</b><small>Active vs passive monitoring</small>
+    </button>
+    <button class="building b-vuln" data-place="vuln">
+      <span class="roof"></span><span class="body"></span><em>4</em><b>Triage Clinic</b><small>Assessment · CVSS · remediation</small>
+    </button>
+    <button class="building b-data" data-place="data">
+      <span class="roof"></span><span class="body"></span><em>5</em><b>Data Vault</b><small>Encrypt · tokenise · mask</small>
+    </button>
+    <button class="building b-endpoint" data-place="endpoint">
+      <span class="roof"></span><span class="body"></span><em>6</em><b>Device Garage</b><small>Endpoint policy & patching</small>
+    </button>
+    <button class="building b-breach" data-place="breach">
+      <span class="roof"></span><span class="body"></span><em>7</em><b>Incident Theatre</b><small>Home Depot breach replay</small>
+    </button>
+
+    <div class="quad">
+      <div class="shield">✦</div>
+      <b>START HERE</b>
+      <span>Pick any building</span>
+    </div>
+  </div>
+</section>
+
+<div id="scenes"></div>
+
+<section id="quizScene" class="scene quiz-scene">
+  <button class="back-map">← Campus Map</button>
+  <div class="scene-shell">
+    <div class="scene-head"><span>FINAL STOP</span><h2>Graduation Check</h2><p>Nine decisions across the whole lecture.</p></div>
+    <div id="finalQuiz"></div>
+  </div>
+</section>
+</main>
+
+<div class="passport">
+  <span>VISITED</span>
+  <i data-stamp="cia"></i><i data-stamp="fail"></i><i data-stamp="monitor"></i><i data-stamp="vuln"></i><i data-stamp="data"></i><i data-stamp="endpoint"></i><i data-stamp="breach"></i>
+  <button id="quizBtn">Final Check →</button>
 </div>
 
 <script src="content-a.js"></script>
